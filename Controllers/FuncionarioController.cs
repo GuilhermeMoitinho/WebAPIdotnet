@@ -35,6 +35,18 @@ namespace WebApiASP.Controllers
         List<Funcionario> func = _context.Funcionarios.ToList();
         return Ok(func);
     }
+    
+    [HttpGet("{id}")]
+    public IActionResult GetId(int id)
+    {
+      var func = _context.Funcionarios.Find(id);
+      if(func == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(func);
+    }
 
     
     [HttpPut("{id}")]
